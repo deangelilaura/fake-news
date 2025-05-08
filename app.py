@@ -1,6 +1,4 @@
-# Parole sospette e rassicuranti con punteggi
 punteggi_parole = {
-    # Parole sospette (negative)
     "shock": -2,
     "incredibile": -2,
     "esclusivo": -1.5,
@@ -12,7 +10,6 @@ punteggi_parole = {
     "sensazionale": -1.5,
     "truffa": -2,
 
-    # Parole rassicuranti (positive)
     "studio": 2,
     "ricerca": 2,
     "ufficiale": 1.5,
@@ -26,17 +23,11 @@ punteggi_parole = {
 }
 
 def titolo(titolo):
-    """
-    Analizza il titolo e restituisce un punteggio basato sulla presenza di parole sospette
-    o rassicuranti e sulla lunghezza del titolo.
-    """
     title_lower = titolo.lower()
     parole = title_lower.split()
     
-    # Calcola il punteggio basato sulle parole
     calcolo_punteggio = sum(punteggi_parole.get(parola, 0) for parola in parole)
     
-    # Classificazione basata sul punteggio
     if calcolo_punteggio < -2:
         classificazione = "Fake News"
     elif -2 <= calcolo_punteggio <= 2:
